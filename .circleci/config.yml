@@ -43,7 +43,7 @@ jobs:
 
 workflows:
   version: 2
-  "circleci-monorepo-helper":
+  'circleci-monorepo-helper':
     jobs:
       - node-latest
       - node-12

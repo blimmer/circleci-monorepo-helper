@@ -1,5 +1,4 @@
-circleci-monorepo-helper
-========================
+# circleci-monorepo-helper
 
 A CLI tool used to generate CircleCI continuation workflows
 
@@ -10,11 +9,15 @@ A CLI tool used to generate CircleCI continuation workflows
 [![License](https://img.shields.io/npm/l/circleci-monorepo-helper.svg)](https://github.com/blimmer/circleci-monorepo-helper/blob/master/package.json)
 
 <!-- toc -->
-* [Usage](#usage)
-* [Commands](#commands)
+
+- [Usage](#usage)
+- [Commands](#commands)
 <!-- tocstop -->
+
 # Usage
+
 <!-- usage -->
+
 ```sh-session
 $ npm install -g circleci-monorepo-helper
 $ circleci-monorepo-helper COMMAND
@@ -26,8 +29,11 @@ USAGE
   $ circleci-monorepo-helper COMMAND
 ...
 ```
+
 <!-- usagestop -->
+
 # Commands
+
 <!-- commands -->
 
 <!-- commandsstop -->
