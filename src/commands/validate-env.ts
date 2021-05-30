@@ -13,7 +13,13 @@ export default class ValidateEnv extends Command {
   static args = [];
 
   async run(): Promise<void> {
-    await this.validateCommandExists('git');
+    try {
+      await this.validateCommandExists('git');
+    } catch (e) {
+      this.error(e);
+    }
+
+    this.log('Environment is ready to run this tool.');
   }
 
   private async validateCommandExists(command: string): Promise<boolean> {
