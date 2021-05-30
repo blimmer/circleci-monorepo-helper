@@ -1,19 +1,17 @@
 import { expect, test } from '@oclif/test';
 import { describe } from 'mocha';
 
-import cmd = require('../src');
-
-describe('circleci-monorepo-helper', () => {
+describe('hello', () => {
   test
     .stdout()
-    .do(() => cmd.run([]))
+    .command(['hello'])
     .it('runs hello', (ctx) => {
       expect(ctx.stdout).to.contain('hello world');
     });
 
   test
     .stdout()
-    .do(() => cmd.run(['--name', 'jeff']))
+    .command(['hello', '--name', 'jeff'])
     .it('runs hello --name jeff', (ctx) => {
       expect(ctx.stdout).to.contain('hello jeff');
     });

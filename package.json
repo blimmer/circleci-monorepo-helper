@@ -23,6 +23,7 @@
     "@typescript-eslint/parser": "^2.34.0",
     "chai": "^4.3.4",
     "eslint": "^5.16.0",
+    "globby": "^10.0.2",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
     "mocha": "^5.2.0",
@@ -36,28 +37,34 @@
   },
   "files": [
     "/bin",
-    "/lib"
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
   ],
   "homepage": "https://github.com/blimmer/circleci-monorepo-helper",
   "keywords": [
     "oclif"
   ],
   "license": "MIT",
+  "lint-staged": {
+    "*.{ts,js}": "eslint --cache --fix",
+    "*.{ts,js,css,md}": "prettier --write"
+  },
   "main": "lib/index.js",
   "oclif": {
-    "bin": "circleci-monorepo-helper"
+    "commands": "./lib/commands",
+    "bin": "circleci-monorepo-helper",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
   },
   "repository": "blimmer/circleci-monorepo-helper",
   "scripts": {
-    "posttest": "eslint . --ext .ts --config .eslintrc.js",
-    "prepack": "rm -rf lib && tsc -b && oclif-dev readme",
+    "postpack": "rm -f oclif.manifest.json",
+    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "prepare": "husky install",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "version": "oclif-dev readme && git add README.md",
-    "prepare": "husky install"
+    "version": "oclif-dev readme && git add README.md"
   },
-  "types": "lib/index.d.ts",
-  "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
-  }
+  "types": "lib/index.d.ts"
 }
